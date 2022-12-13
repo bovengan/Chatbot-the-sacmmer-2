@@ -31,7 +31,7 @@ def askname_func(user):
             elif sentence[1] == "am":
                 user.name = sentence[2].capitalize()
             else:
-                user.askNameNotUnderstood += 1
+                user.askNameChatbotNotUnderstood += 1
                 print(choice(notUnderstood))
                 continue
             time.sleep(2)
@@ -41,5 +41,6 @@ def askname_func(user):
             print(choice(nameWritten))
             answered = True
         else:
+            user.askNameUserNoResponse += 1
             print(choice(nameNotWritten))
     termios.tcflush(sys.stdin, termios.TCIFLUSH)

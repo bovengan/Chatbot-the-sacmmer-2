@@ -66,6 +66,7 @@ def askage_func(user):
             answered = True
             time.sleep(5)
         else:
+            user.askAgeUserNoResponse += 1
             print(choice(ageNotWritten))
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 

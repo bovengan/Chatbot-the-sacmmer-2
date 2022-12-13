@@ -9,9 +9,11 @@ class User:
         self.didTrex = False
 
         # askname
-        self.askNameNotUnderstood = 0
+        self.askNameUserNoResponse = 0
+        self.askNameChatbotNotUnderstood = 0
 
         # askage
+        self.askAgeUserNoResponse = 0
         self.askAgeChatbotNotUnderstood = 0
         self.askAgeUserNotReady = 0
 
@@ -25,6 +27,9 @@ class User:
         # tasktwo
         self.taskTwoUserNoResponse = 0
 
-        # tasktwo
+        # taskthree
         self.taskThreeUserNoResponse = 0
+
+        # taskfinal
+        self.taskFinalUserNoResponse = 0
 
