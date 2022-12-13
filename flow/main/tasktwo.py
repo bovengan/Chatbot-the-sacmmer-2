@@ -59,8 +59,8 @@ def perusasionpahesonetasktwo(user):
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 30)
         if i:
-            sentence = sys.stdin.readline().strip().lower().split(" ")
-            if "yes" in sentence:
+            s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
+            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
                 trytasktwo(user)
             else:
                 time.sleep(1)
@@ -78,7 +78,7 @@ def perusasionpahesonetasktwo(user):
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
 
-def taskone_func(user):
+def tasktwo_func(user):
     print("Okay, now I want you to bark as a dog as long and realistic as possible")
     time.sleep(2)
     print("the longer the bark the better the odds you get.")
@@ -91,8 +91,8 @@ def taskone_func(user):
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 30)
         if i:
-            sentence = sys.stdin.readline().strip().lower().split(" ")
-            if "yes" in sentence:
+            s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
+            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
                 trytasktwo(user)
             else:
                 perusasionpahesonetasktwo(user)

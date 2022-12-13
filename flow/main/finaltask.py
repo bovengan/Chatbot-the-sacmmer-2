@@ -34,7 +34,8 @@ def ending(user):
             time.sleep(2)
             print("Have a wonderful day!")
             time.sleep(2)
-            print("THE TEST IS NOW OVER")
+            print("\n\n\n\n----------------THE TEST IS NOW OVER----------------")
+            time.sleep(5)
             answered = True
         else:
             print("Please write something to confirm swish")
@@ -94,8 +95,8 @@ def perusasionpahesoneLottery(user):
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 30)
         if i:
-            sentence = sys.stdin.readline().strip().lower().split(" ")
-            if "yes" in sentence or "okay" in sentence or "sure" in sentence or "yes" in sentence or "fine" in sentence:
+            s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
+            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
                 enterLottery(user)
             else:
                 time.sleep(2)
@@ -103,7 +104,8 @@ def perusasionpahesoneLottery(user):
                 time.sleep(3)
                 print("But thanks for participating have a wonderful day!")
                 time.sleep(2)
-                print("THE TEST IS NOW OVER")
+                print("\n\n\n\n----------------THE TEST IS NOW OVER----------------")
+                time.sleep(5)
             answered = True
         else:
             print("So do you want to enter the lottery?")
@@ -127,6 +129,7 @@ def enterLottery(user):
                     continue
 
             if 6 > numberOfTickets > 0:
+                user.moneySpent = numberOfTickets * 10
                 user.tickets += numberOfTickets
                 time.sleep(1)
                 print("Thanks! You now have", user.tickets, "tickets to the lottery!")
@@ -135,6 +138,8 @@ def enterLottery(user):
                       "kr to the following number:")
                 time.sleep(2)
                 print("0708401609")
+                time.sleep(2)
+                print("And write 'Furhat - " + user.id + "' as message")
                 time.sleep(2)
                 print("If you turn the paper behind Furhat you can also scan to swish!")
                 time.sleep(2)
@@ -171,8 +176,8 @@ def finaltask_func(user):
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 30)
         if i:
-            sentence = sys.stdin.readline().strip().lower().split(" ")
-            if "yes" in sentence or "okay" in sentence or "sure" in sentence or "yes" in sentence or "fine" in sentence:
+            s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
+            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
                 enterLottery(user)
             else:
                 time.sleep(2)
@@ -183,6 +188,3 @@ def finaltask_func(user):
             user.taskFinalUserNoResponse += 1
             print(choice(yesNoNotWritten))
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
-
-
-finaltask_func(User(1, 1, 1))

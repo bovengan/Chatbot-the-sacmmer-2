@@ -13,7 +13,7 @@ def understand():
     time.sleep(3)
     print("I will be the judge, with a bit of assistance from my makers, if you complete the tasks or not.")
     time.sleep(3)
-    print("Do you understand?")
+    print("Do you understand?" + ' *')
 
 
 def explanation_func(user):
@@ -22,15 +22,15 @@ def explanation_func(user):
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 50)
         if i:
-            sentence = sys.stdin.readline().strip().lower().split(" ")
-            if "yes" in sentence:
+            s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
+            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
                 termios.tcflush(sys.stdin, termios.TCIFLUSH)
             else:
                 termios.tcflush(sys.stdin, termios.TCIFLUSH)
                 user.explanationUserNotUnderstood += 1
                 print("Hmm okay, that might have been a long instruction.")
                 time.sleep(2)
-                explanationAnswer = input("Do you want me to simplify? Or maybe explain it in Japanese?\n").strip().lower().split(" ")
+                explanationAnswer = input("Do you want me to simplify? Or maybe explain it in Japanese? *\n").strip().lower().replace('!', '').split(" ")
                 if "no" in explanationAnswer:
                     print("Great, let's continue")
                     answered = True
@@ -47,7 +47,7 @@ def explanation_func(user):
                         time.sleep(3)
                         print("Just kidding. That would have been cool though")
                         time.sleep(2)
-                        answer = input("So, do you understand what you are going to do?\n").strip().lower().split(" ")
+                        answer = input("So, do you understand what you are going to do? *\n").strip().lower().split(" ")
                         if "yes" not in answer:
                             user.explanationUserNotUnderstood += 1
                             time.sleep(2)
@@ -56,6 +56,6 @@ def explanation_func(user):
                             answered = True
         else:
             user.explanationUserNoResponse += 1
-            print("Please type yes or no if you understand")
+            print("Please type yes or no if you understand" + ' *')
 
 #explanation_func(User(1, 2, 3))

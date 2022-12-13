@@ -65,8 +65,8 @@ def perusasionpahesonetaskthree(user):
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 30)
         if i:
-            sentence = sys.stdin.readline().strip().lower().split(" ")
-            if "yes" in sentence or "okay" in sentence or "sure" in sentence:
+            s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
+            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
                 trytaskthree(user)
             else:
                 print("Okay, okay! You are a scared i guess!")
@@ -90,8 +90,8 @@ def taskthree_func(user):
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 30)
         if i:
-            sentence = sys.stdin.readline().strip().lower().split(" ")
-            if "yes" in sentence:
+            s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
+            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
                 trytaskthree(user)
             else:
                 perusasionpahesonetaskthree(user)
@@ -101,5 +101,3 @@ def taskthree_func(user):
             print(choice(yesNoNotWritten))
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
-
-taskthree_func(User(1, 1, 1))

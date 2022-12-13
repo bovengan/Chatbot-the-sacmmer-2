@@ -7,7 +7,7 @@ from time import sleep
 
 def greeting_func():
     greetings = ["Hi there", "Hello there"]
-    print(choice(greetings))
+    print(choice(greetings) + ' *')
 
     i, o, e = select.select([sys.stdin], [], [], 10)
 

@@ -13,7 +13,7 @@ notUnderstood = ["I am sorry, I did not quite understand what you said, how old 
 
 
 def askage_func(user):
-    print("How old are you?")
+    print("How old are you?" + ' *')
     answered = False
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 15)
@@ -28,26 +28,26 @@ def askage_func(user):
                     user.age = int(sentence[2])
                 else:
                     user.askAgeChatbotNotUnderstood += 1
-                    print(choice(notUnderstood))
+                    print(choice(notUnderstood) + ' *')
                     continue
             time.sleep(2)
             if user.age < 4:
                 print("You must be the smartest baby I've ever encountered...")
                 time.sleep(1)
-                print("Now come on, what is your real age?")
+                print("Now come on, what is your real age?" + ' *')
                 continue
             elif user.age < 18:
                 print(
                     "Hmmm I have a very hard time believing since the age requirement for interacting with me is 18... Don't know why that is though...")
                 time.sleep(1)
-                print("Now come on, what is your real age?")
+                print("Now come on, what is your real age?" + ' *')
                 continue
             elif 80 < user.age < 130:
                 print("Wow you are really old! That is awesome, you do not look a day older than 25")
             elif user.age > 129:
-                print("That is insane, almost unbelievable... Which it is, you little prankster...")
+                print("That is insane, almost unbelievable... Which it is, you little prankster..." + ' *')
                 time.sleep(1)
-                print("Now come on, what is your real age?")
+                print("Now come on, what is your real age?" + ' *')
                 continue
             else:
                 print("Nice, being " + str(user.age) + " must be great")
@@ -73,7 +73,7 @@ def askage_func(user):
     answered = False
     print("But now let's move onto more important things")
     time.sleep(2)
-    ready = input("Are you ready to hear about what we are going to do today?\n").lower().strip().split()
+    ready = input("Are you ready to hear about what we are going to do today? *\n").lower().strip().split()
     while not answered:
         if "ready" in ready or "yes" in ready or "yeah" in ready or "yeah" in ready:
             answered = True
@@ -88,4 +88,4 @@ def askage_func(user):
             time.sleep(1)
             print("....")
             time.sleep(1)
-            ready = input("Okay, are you ready now?\n").lower().strip().split()
+            ready = input("Okay, are you ready now? *\n").lower().strip().split()

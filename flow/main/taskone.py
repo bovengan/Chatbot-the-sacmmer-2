@@ -19,8 +19,8 @@ def trytask(user):
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 15)
         if i:
-            sentence = sys.stdin.readline().strip().lower().split(" ")
-            if "yes" in sentence:
+            s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
+            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
                 time.sleep(1)
                 print("Good job! You looked like a real athlete doing that. Let's move onto the second task.")
                 user.tickets += 1
@@ -47,8 +47,8 @@ def perusasionpahesonetaskone(user):
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 15)
         if i:
-            sentence = sys.stdin.readline().strip().lower().split(" ")
-            if "yes" in sentence:
+            s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
+            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
                 trytask(user)
             else:
                 perusasionpahestwotaskone(user)
@@ -68,8 +68,8 @@ def perusasionpahestwotaskone(user):
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 15)
         if i:
-            sentence = sys.stdin.readline().strip().lower().split(" ")
-            if "yes" in sentence or "okay" in sentence:
+            s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
+            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
                 trytask(user)
             else:
                 print("Well, what a shame!")
@@ -97,8 +97,8 @@ def taskone_func(user):
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 5)
         if i:
-            sentence = sys.stdin.readline().strip().lower().split(" ")
-            if "yes" in sentence:
+            s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
+            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
                 trytask(user)
             else:
                 perusasionpahesonetaskone(user)

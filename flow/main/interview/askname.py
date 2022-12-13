@@ -11,7 +11,7 @@ notUnderstood = ["I am sorry, I did not quite understand what you said, what is 
 
 
 def askname_func(user):
-    print("I am Gabriel, what is your name?")
+    print("I am Gabriel, what is your name? *")
     answered = False
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 30)
@@ -38,9 +38,9 @@ def askname_func(user):
             nameWritten = ["Nice to meet you " + user.name + ", you are a very handsome human",
                            user.name + ", what a lovely name",
                            "It is a pleasure meeting you " + user.name]
-            print(choice(nameWritten))
+            print(choice(nameWritten) + ' *')
             answered = True
         else:
             user.askNameUserNoResponse += 1
-            print(choice(nameNotWritten))
+            print(choice(nameNotWritten) + ' *')
     termios.tcflush(sys.stdin, termios.TCIFLUSH)
