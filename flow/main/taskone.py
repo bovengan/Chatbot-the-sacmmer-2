@@ -21,13 +21,21 @@ def trytask(user):
         if i:
             sentence = sys.stdin.readline().strip().lower().split(" ")
             if "yes" in sentence:
+                time.sleep(1)
                 print("Good job! You looked like a real athlete doing that. Let's move onto the second task.")
+                user.tickets += 1
             else:
-                print(
-                    "Well, what a shame! But I understand that it can be embarrassing, lets move on to the final task instead!")
+                time.sleep(1)
+                print("Well, what a shame!")
+                time.sleep(1)
+                print("But I understand that it can be embarrassing.")
+                time.sleep(2)
+                print("Lets move on to the final task instead!")
+                time.sleep(2)
                 print("I know you will love this one!")
             answered = True
         else:
+            user.taskOneUserNoResponse += 1
             print("Please answer yes or no")
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
@@ -46,6 +54,7 @@ def perusasionpahesonetaskone(user):
                 perusasionpahestwotaskone(user)
             answered = True
         else:
+            user.taskOneUserNoResponse += 1
             print("So do you want to try it?")
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
@@ -72,6 +81,7 @@ def perusasionpahestwotaskone(user):
                 print("I know you will love this one!")
             answered = True
         else:
+            user.taskOneUserNoResponse += 1
             print("So do you want to try it?")
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
@@ -94,6 +104,7 @@ def taskone_func(user):
                 perusasionpahesonetaskone(user)
             answered = True
         else:
+            user.taskOneUserNoResponse += 1
             print(choice(yesNoNotWritten))
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 

@@ -16,7 +16,7 @@ def askage_func(user):
     print("How old are you?")
     answered = False
     while not answered:
-        i, o, e = select.select([sys.stdin], [], [], 5)
+        i, o, e = select.select([sys.stdin], [], [], 15)
         if i:
             sentence = sys.stdin.readline().strip().lower().split(" ")
             try:
@@ -27,6 +27,7 @@ def askage_func(user):
                 elif sentence[1] == "am":
                     user.age = int(sentence[2])
                 else:
+                    user.askAgeChatbotNotUnderstood += 1
                     print(choice(notUnderstood))
                     continue
             time.sleep(2)
@@ -69,19 +70,21 @@ def askage_func(user):
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
     answered = False
-    ready = input(
-        "But now let's move onto more important things. Are you ready to hear about what we are going to do today?\n").lower().strip().split()
+    print("But now let's move onto more important things")
+    time.sleep(2)
+    ready = input("Are you ready to hear about what we are going to do today?\n").lower().strip().split()
     while not answered:
-        if "ready" in ready or "yes" in ready or "yeah" in ready:
+        if "ready" in ready or "yes" in ready or "yeah" in ready or "yeah" in ready:
             answered = True
         else:
+            user.askAgeUserNotReady += 1
+            time.sleep(1)
+            print(".")
+            time.sleep(1)
+            print("..")
             time.sleep(1)
             print("...")
             time.sleep(1)
-            print("...")
-            time.sleep(1)
-            print("...")
-            time.sleep(1)
-            print("...")
+            print("....")
             time.sleep(1)
             ready = input("Okay, are you ready now?\n").lower().strip().split()

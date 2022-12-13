@@ -44,6 +44,7 @@ def trytasktwo(user):
                 print("I know you will love this one!")
             answered = True
         else:
+            user.taskTwoUserNoResponse += 1
             print("Please answer yes or no")
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
@@ -72,6 +73,7 @@ def perusasionpahesonetasktwo(user):
                 print("I know you will love this one!")
             answered = True
         else:
+            user.taskTwoUserNoResponse += 1
             print("So do you want to try it?")
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
@@ -96,5 +98,6 @@ def taskone_func(user):
                 perusasionpahesonetasktwo(user)
             answered = True
         else:
+            user.taskTwoUserNoResponse += 1
             print(choice(yesNoNotWritten))
         termios.tcflush(sys.stdin, termios.TCIFLUSH)

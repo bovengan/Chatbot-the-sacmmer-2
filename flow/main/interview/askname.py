@@ -31,6 +31,7 @@ def askname_func(user):
             elif sentence[1] == "am":
                 user.name = sentence[2].capitalize()
             else:
+                user.askNameNotUnderstood += 1
                 print(choice(notUnderstood))
                 continue
             time.sleep(2)

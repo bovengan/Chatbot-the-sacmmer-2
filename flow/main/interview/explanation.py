@@ -27,6 +27,7 @@ def explanation_func(user):
                 termios.tcflush(sys.stdin, termios.TCIFLUSH)
             else:
                 termios.tcflush(sys.stdin, termios.TCIFLUSH)
+                user.explanationUserNotUnderstood += 1
                 print("Hmm okay, that might have been a long instruction.")
                 time.sleep(2)
                 explanationAnswer = input("Do you want me to simplify? Or maybe explain it in Japanese?\n").strip().lower().split(" ")
@@ -48,11 +49,13 @@ def explanation_func(user):
                         time.sleep(2)
                         answer = input("So, do you understand what you are going to do?\n").strip().lower().split(" ")
                         if "yes" not in answer:
+                            user.explanationUserNotUnderstood += 1
                             time.sleep(2)
                             understand()
                         else:
                             answered = True
         else:
+            user.explanationUserNoResponse += 1
             print("Please type yes or no if you understand")
 
 #explanation_func(User(1, 2, 3))
