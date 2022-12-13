@@ -12,7 +12,7 @@ def greeting_func():
     i, o, e = select.select([sys.stdin], [], [], 10)
 
     if i:
-        sleep(2)
+        pass
     else:
         pass
     termios.tcflush(sys.stdin, termios.TCIFLUSH)

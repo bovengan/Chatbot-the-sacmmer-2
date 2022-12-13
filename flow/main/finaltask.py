@@ -15,8 +15,9 @@ yesNoNotWritten = ["Do you want to enter the lottery?"]
 
 
 def ending(user):
+    termios.tcflush(sys.stdin, termios.TCIFLUSH)
     time.sleep(2)
-    print("Write anything when you have swished and hit enter!")
+    print("Write anything when you have swished and hit enter! *")
     answered = False
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 120)
@@ -43,7 +44,8 @@ def ending(user):
 
 
 def perusasionpahesoneLottery(user):
-    time.sleep(3)
+    termios.tcflush(sys.stdin, termios.TCIFLUSH)
+    time.sleep(2)
 
     if allThreeTasksDone:
         print("But think of all the tasks you have done!")
@@ -82,14 +84,14 @@ def perusasionpahesoneLottery(user):
         time.sleep(2)
         print("Not do a single task that I give you?")
 
-    time.sleep(3)
+    time.sleep(2)
     print("Did you even here me before? You can win 400 kr. 400! Plus the amount others put in!")
     time.sleep(3)
     print("In total you can win 400 + 10 (kr) * 5 (max tickets) * 20 (number of testers) = 1 400kr")
     time.sleep(3)
     print("1 400kr!!! That is like way more than your CSN")
     time.sleep(3)
-    print("So, do you want to enter the lottery?")
+    print("So, do you want to enter the lottery? *")
 
     answered = False
     while not answered:
@@ -108,13 +110,14 @@ def perusasionpahesoneLottery(user):
                 time.sleep(5)
             answered = True
         else:
-            print("So do you want to enter the lottery?")
+            print("So do you want to enter the lottery? *")
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
 
 def enterLottery(user):
+    termios.tcflush(sys.stdin, termios.TCIFLUSH)
     time.sleep(1)
-    print("Great, how many tickets do you want to purchase? (max 5)")
+    print("Great, how many tickets do you want to purchase? (max 5) *")
     answered = False
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 60)
@@ -146,15 +149,16 @@ def enterLottery(user):
                 ending(user)
                 answered = True
             else:
-                print("Please enter a valid number between 1 and 5")
+                print("Please enter a valid number between 1 and 5 *")
         else:
             user.taskFinalUserNoResponse += 1
-            print("Please answer how many tickets you want to purchase!")
+            print("Please answer how many tickets you want to purchase! *")
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
 
 def finaltask_func(user):
-    print("So finally you will have the chance to win 400kr, plus the amount other test users put in.")
+    termios.tcflush(sys.stdin, termios.TCIFLUSH)
+    print("\nSo finally you will have the chance to win 400kr, plus the amount other test users put in.")
     time.sleep(4)
     print("To be a part of the lottery you have to pay for at least one lottery ticket that costs 10kr")
     time.sleep(4)
@@ -171,7 +175,7 @@ def finaltask_func(user):
         print("you would have ", user.tickets + 1, " tickets.")
         time.sleep(2)
 
-    print("So, do you want to enter the lottery?")
+    print("So, do you want to enter the lottery? *")
     answered = False
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 30)
@@ -186,5 +190,5 @@ def finaltask_func(user):
             answered = True
         else:
             user.taskFinalUserNoResponse += 1
-            print(choice(yesNoNotWritten))
+            print(choice(yesNoNotWritten) + " *")
         termios.tcflush(sys.stdin, termios.TCIFLUSH)

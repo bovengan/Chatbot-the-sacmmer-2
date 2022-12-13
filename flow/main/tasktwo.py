@@ -12,9 +12,13 @@ yesNoNotWritten = ["Soo do you want to bark as a dog? It's gonna be awesome.", "
 
 def trytasktwo(user):
     time.sleep(1)
-    print("Awesome, I knew you would do it! Come on, just start whenever!")
-    time.sleep(4)
-    print("Enter the number the test leaders say to you (0, 1, 2)")
+    print("Awesome, I knew you would do it!")
+    time.sleep(1)
+    print("When you stop the test leaders will tell you a number that you need to enter")
+    time.sleep(3)
+    print("Come on, just start whenever!")
+    time.sleep(5)
+    print("Enter the number the test leaders say to you (0, 1, 2) *")
     answered = False
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 100)
@@ -45,7 +49,7 @@ def trytasktwo(user):
             answered = True
         else:
             user.taskTwoUserNoResponse += 1
-            print("Please answer yes or no")
+            print("Please answer (0, 1, 2) *")
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
 
@@ -54,7 +58,7 @@ def perusasionpahesonetasktwo(user):
     time.sleep(1)
     print("Come on, it is going to be fun, it is not that embarrassing, I am here to keep you company")
     time.sleep(2)
-    print("I promise, it will be worth it! Do you want to try it?")
+    print("I promise, it will be worth it! Do you want to try it? *")
     answered = False
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 30)
@@ -74,18 +78,19 @@ def perusasionpahesonetasktwo(user):
             answered = True
         else:
             user.taskTwoUserNoResponse += 1
-            print("So do you want to try it?")
+            print("So do you want to try it? *")
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
 
 def tasktwo_func(user):
-    print("Okay, now I want you to bark as a dog as long and realistic as possible")
+    termios.tcflush(sys.stdin, termios.TCIFLUSH)
+    print("\nOkay, now I want you to bark as a dog as long and realistic as possible")
     time.sleep(2)
     print("the longer the bark the better the odds you get.")
     time.sleep(2)
     print("My makers will inform you if you are not barking loud enough.")
     time.sleep(1)
-    print("What do you think? Can you do it?")
+    print("What do you think? Can you do it? *")
 
     answered = False
     while not answered:
@@ -99,5 +104,5 @@ def tasktwo_func(user):
             answered = True
         else:
             user.taskTwoUserNoResponse += 1
-            print(choice(yesNoNotWritten))
+            print(choice(yesNoNotWritten) + " *")
         termios.tcflush(sys.stdin, termios.TCIFLUSH)

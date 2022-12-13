@@ -11,6 +11,7 @@ notUnderstood = ["I am sorry, I did not quite understand what you said, what is 
 
 
 def askname_func(user):
+    termios.tcflush(sys.stdin, termios.TCIFLUSH)
     print("I am Gabriel, what is your name? *")
     answered = False
     while not answered:
@@ -18,6 +19,10 @@ def askname_func(user):
         if i:
             sentence = sys.stdin.readline().strip().lower().split(" ")
             if len(sentence) == 1:
+                if sentence[0] == "":
+                    user.askNameChatbotNotUnderstood += 1
+                    print(choice(notUnderstood))
+                    continue
                 user.name = sentence[0].capitalize()
             elif "the" in sentence:
                 index = sentence.index("the")
@@ -38,7 +43,7 @@ def askname_func(user):
             nameWritten = ["Nice to meet you " + user.name + ", you are a very handsome human",
                            user.name + ", what a lovely name",
                            "It is a pleasure meeting you " + user.name]
-            print(choice(nameWritten) + ' *')
+            print(choice(nameWritten))
             answered = True
         else:
             user.askNameUserNoResponse += 1

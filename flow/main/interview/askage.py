@@ -13,6 +13,7 @@ notUnderstood = ["I am sorry, I did not quite understand what you said, how old 
 
 
 def askage_func(user):
+    termios.tcflush(sys.stdin, termios.TCIFLUSH)
     print("How old are you?" + ' *')
     answered = False
     while not answered:
@@ -20,6 +21,10 @@ def askage_func(user):
         if i:
             sentence = sys.stdin.readline().strip().lower().split(" ")
             try:
+                if sentence[0] == "":
+                    user.askAgeChatbotNotUnderstood += 1
+                    print(choice(notUnderstood) + ' *')
+                    continue
                 user.age = int(sentence[0])
             except ValueError:
                 if sentence[0] in ["i'm", "im"]:
@@ -67,15 +72,15 @@ def askage_func(user):
             time.sleep(5)
         else:
             user.askAgeUserNoResponse += 1
-            print(choice(ageNotWritten))
+            print(choice(ageNotWritten) + " *")
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
     answered = False
     print("But now let's move onto more important things")
     time.sleep(2)
-    ready = input("Are you ready to hear about what we are going to do today? *\n").lower().strip().split()
+    r = input("Are you ready to hear about what we are going to do today? *\n").lower().strip().replace("!","").split()
     while not answered:
-        if "ready" in ready or "yes" in ready or "yeah" in ready or "yeah" in ready:
+        if "ready" in r or "yes" in r or "yeah" in r or "yeah" in r or "absolutely" in r or "absolutly" in r or "ye" in r or "yas" in r or "yeah" in r or "course" in r:
             answered = True
         else:
             user.askAgeUserNotReady += 1
@@ -88,4 +93,5 @@ def askage_func(user):
             time.sleep(1)
             print("....")
             time.sleep(1)
-            ready = input("Okay, are you ready now? *\n").lower().strip().split()
+            termios.tcflush(sys.stdin, termios.TCIFLUSH)
+            r = input("Okay, are you ready now? *\n").lower().strip().replace("!","").split()

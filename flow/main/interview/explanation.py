@@ -17,6 +17,7 @@ def understand():
 
 
 def explanation_func(user):
+    termios.tcflush(sys.stdin, termios.TCIFLUSH)
     understand()
     answered = False
     while not answered:
@@ -25,6 +26,7 @@ def explanation_func(user):
             s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
             if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
                 termios.tcflush(sys.stdin, termios.TCIFLUSH)
+                answered = True
             else:
                 termios.tcflush(sys.stdin, termios.TCIFLUSH)
                 user.explanationUserNotUnderstood += 1
@@ -40,9 +42,10 @@ def explanation_func(user):
                         time.sleep(1)
                         print("for each completed task you get better odds at winning the gift.")
                         time.sleep(1)
-                        print("Let's continue")
+                        print("Let's continue...")
                         answered = True
                     elif "japanese" in explanationAnswer:
+                        time.sleep(1)
                         print("完了するタスクが 3 つあり、完了したタスクごとに、ギフトを獲得する確率が高くなります。ここで最初のタスクです")
                         time.sleep(3)
                         print("Just kidding. That would have been cool though")
@@ -56,6 +59,6 @@ def explanation_func(user):
                             answered = True
         else:
             user.explanationUserNoResponse += 1
-            print("Please type yes or no if you understand" + ' *')
+            print("Please type yes or no if you understand *")
 
 #explanation_func(User(1, 2, 3))

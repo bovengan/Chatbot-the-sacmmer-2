@@ -17,7 +17,7 @@ def trytaskthree(user):
     time.sleep(2)
     print("But just go out and start whenever you are ready!")
     time.sleep(4)
-    print("Answer yes or no if the task leaders informed you that you completed the task or not")
+    print("Answer yes or no if the task leaders informed you that you completed the task or not *")
     answered = False
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 200)
@@ -37,7 +37,7 @@ def trytaskthree(user):
             answered = True
         else:
             user.taskThreeUserNoResponse += 1
-            print("Please answer yes or no")
+            print("Please answer yes or no *")
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
 
@@ -60,7 +60,7 @@ def perusasionpahesonetaskthree(user):
         time.sleep(2)
         print("Think of this as an extension of that!")
     time.sleep(2)
-    print("So do you want to do the T-rex?")
+    print("So do you want to do the T-rex? *")
     answered = False
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 30)
@@ -75,29 +75,30 @@ def perusasionpahesonetaskthree(user):
             answered = True
         else:
             user.taskThreeUserNoResponse += 1
-            print("So do you want to try it?")
+            print("So do you want to try it? *")
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
 
 def taskthree_func(user):
-    print("Okay, so wouldn't it be fun if you now go out in the corridor and pretend that you are the dinosaur T-REX?")
+    termios.tcflush(sys.stdin, termios.TCIFLUSH)
+    print("\nOkay, so wouldn't it be fun if you now go out in the corridor and pretend that you are the dinosaur T-REX?")
     time.sleep(3)
     print("And you should both look like one and sound like a T-REX! That would be awesome!")
     time.sleep(2)
-    print("So is this something for you?")
+    print("So is this something for you? *")
 
     answered = False
     while not answered:
         i, o, e = select.select([sys.stdin], [], [], 30)
         if i:
             s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
-            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
-                trytaskthree(user)
-            else:
+            if "no" in s or "not" in s or "nono" in s or "noo":
                 perusasionpahesonetaskthree(user)
+            else:
+                trytaskthree(user)
             answered = True
         else:
             user.taskThreeUserNoResponse += 1
-            print(choice(yesNoNotWritten))
+            print(choice(yesNoNotWritten) + " *")
         termios.tcflush(sys.stdin, termios.TCIFLUSH)
 
