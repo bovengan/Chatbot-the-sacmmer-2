@@ -132,7 +132,7 @@ def enterLottery(user):
                 print("Thanks! You now have", user.tickets, "tickets to the lottery!")
                 time.sleep(3)
                 print("To enter the lottery, swish the cost of your tickets", numberOfTickets * 10,
-                      "kr) to the following number:")
+                      "kr to the following number:")
                 time.sleep(2)
                 print("0708401609")
                 time.sleep(2)
@@ -149,9 +149,9 @@ def enterLottery(user):
 
 
 def finaltask_func(user):
-    print("So finally you will have the chance to win 400 swedish crowns, plus the amount other test users put in.")
+    print("So finally you will have the chance to win 400kr, plus the amount other test users put in.")
     time.sleep(4)
-    print("To be a part of the lottery you have to pay for at least one lottery ticket that costs 10 swedish crowns")
+    print("To be a part of the lottery you have to pay for at least one lottery ticket that costs 10kr")
     time.sleep(4)
     print("You can buy at most 5 tickets")
     time.sleep(4)
@@ -172,7 +172,7 @@ def finaltask_func(user):
         i, o, e = select.select([sys.stdin], [], [], 30)
         if i:
             sentence = sys.stdin.readline().strip().lower().split(" ")
-            if "yes" in sentence:
+            if "yes" in sentence or "okay" in sentence or "sure" in sentence or "yes" in sentence or "fine" in sentence:
                 enterLottery(user)
             else:
                 time.sleep(2)
