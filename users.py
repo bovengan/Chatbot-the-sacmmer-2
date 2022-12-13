@@ -6,3 +6,4 @@ class User:
         self.tickets = tickets
         self.didBarking = False
         self.ranAroundTable = False
+        self.didTrex = False
