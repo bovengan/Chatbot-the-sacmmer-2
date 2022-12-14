@@ -25,6 +25,7 @@ def trytaskthree(user):
             sentence = sys.stdin.readline().strip().lower().split(" ")
             if "yes" in sentence:
                 user.tickets += 1
+                user.didTrex = True
                 time.sleep(1)
                 print("HELP, do not come closer! I am convinced you are a T-rex now!")
                 time.sleep(3)
@@ -42,6 +43,7 @@ def trytaskthree(user):
 
 
 def perusasionpahesonetaskthree(user):
+    user.taskThreeUserSayNo += 1
     time.sleep(1)
     print("Really? I think T-REXes are soo cool! I would love it of you did it!")
     time.sleep(2)
@@ -81,8 +83,10 @@ def perusasionpahesonetaskthree(user):
 
 def taskthree_func(user):
     termios.tcflush(sys.stdin, termios.TCIFLUSH)
-    print("\nOkay, so wouldn't it be fun if you now go out in the corridor and pretend that you are the dinosaur T-REX?")
-    time.sleep(3)
+    print("\nOkay, so wouldn't it be fun if you now go out in the corridor, walk to the end")
+    time.sleep(2)
+    print("and pretend that you are the dinosaur T-REX?")
+    time.sleep(2)
     print("And you should both look like one and sound like a T-REX! That would be awesome!")
     time.sleep(2)
     print("So is this something for you? *")
@@ -92,8 +96,15 @@ def taskthree_func(user):
         i, o, e = select.select([sys.stdin], [], [], 30)
         if i:
             s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
-            if "no" in s or "not" in s or "nono" in s or "noo":
+            if "no" in s or ("not" in s and "why" not in s) or "nono" in s or "noo" in s:
                 perusasionpahesonetaskthree(user)
+            elif "why" in s and "not" in s:
+                trytaskthree(user)
+            elif "why" in s:
+                time.sleep(2)
+                print("Because it would make me happy!")
+                time.sleep(2)
+                print("So do you want to pretend to be a T-REX all the way to the door? *")
             else:
                 trytaskthree(user)
             answered = True

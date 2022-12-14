@@ -22,9 +22,13 @@ try:
                    "explanationUserNoResponse int,"
                    "explanationUserNotUnderstood int,"
                    "taskOneUserNoResponse int,"
+                   "taskOneUserSayNo int,"
                    "taskTwoUserNoResponse int,"
+                   "taskTwoUserSayNo int,"
                    "taskThreeUserNoResponse int,"
+                   "taskThreeUserSayNo int,"
                    "taskFinalUserNoResponse int,"
+                   "taskFinalUserSayNo int,"
                    "userNoResponse int)")
     sqliteConnection.commit()
     print('New table created')

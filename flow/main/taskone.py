@@ -24,6 +24,7 @@ def trytask(user):
                 time.sleep(1)
                 print("Good job! You looked like a real athlete doing that. Let's move onto the second task.")
                 user.tickets += 1
+                user.ranAroundTable = True
             else:
                 time.sleep(1)
                 print("Well, what a shame!")
@@ -41,6 +42,7 @@ def trytask(user):
 
 
 def perusasionpahesonetaskone(user):
+    user.taskOneUserSayNo += 1
     time.sleep(1)
     print("I promise, it will be worth it! Do you want to try it? *")
     answered = False
@@ -48,10 +50,10 @@ def perusasionpahesonetaskone(user):
         i, o, e = select.select([sys.stdin], [], [], 15)
         if i:
             s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
-            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
-                trytask(user)
-            else:
+            if "no" in s or ("not" in s and "why" not in s) or "nono" in s or "noo" in s:
                 perusasionpahestwotaskone(user)
+            else:
+                trytask(user)
             answered = True
         else:
             user.taskOneUserNoResponse += 1
@@ -60,6 +62,7 @@ def perusasionpahesonetaskone(user):
 
 
 def perusasionpahestwotaskone(user):
+    user.taskOneUserSayNo += 1
     time.sleep(1)
     print("Come on, you are only " + str(user.age) + " years old, no one expects you to be mature.")
     time.sleep(2)
@@ -69,9 +72,7 @@ def perusasionpahestwotaskone(user):
         i, o, e = select.select([sys.stdin], [], [], 15)
         if i:
             s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
-            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
-                trytask(user)
-            else:
+            if "no" in s or ("not" in s and "why" not in s) or "nono" in s or "noo" in s:
                 print("Well, what a shame!")
                 time.sleep(2)
                 print("But I understand that it can be embarrassing")
@@ -79,6 +80,8 @@ def perusasionpahestwotaskone(user):
                 print("lets move on to the final task instead!")
                 time.sleep(2)
                 print("I know you will love this one!")
+            else:
+                trytask(user)
             answered = True
         else:
             user.taskOneUserNoResponse += 1
@@ -98,10 +101,17 @@ def taskone_func(user):
         i, o, e = select.select([sys.stdin], [], [], 30)
         if i:
             s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
-            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
-                trytask(user)
-            else:
+            if "no" in s or ("not" in s and "why" not in s) or "nono" in s or "noo" in s:
                 perusasionpahesonetaskone(user)
+            elif "why" in s and "not" in s:
+                trytask(user)
+            elif "why" in s:
+                time.sleep(2)
+                print("Because it would make me happy!")
+                time.sleep(2)
+                print("So do you want to run around the table? *")
+            else:
+                trytask(user)
             answered = True
         else:
             user.taskOneUserNoResponse += 1

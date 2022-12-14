@@ -80,7 +80,7 @@ def askage_func(user):
     time.sleep(2)
     r = input("Are you ready to hear about what we are going to do today? *\n").lower().strip().replace("!","").split()
     while not answered:
-        if "ready" in r or "yes" in r or "yeah" in r or "yeah" in r or "absolutely" in r or "absolutly" in r or "ye" in r or "yas" in r or "yeah" in r or "course" in r:
+        if "ready" in r or "yes" in r or "yeah" in r or "yeah" in r or "absolutely" in r or "absolutly" in r or "ye" in r or "yas" in r or "yeah" in r or "course" in r or "sure" in r:
             answered = True
         else:
             user.askAgeUserNotReady += 1

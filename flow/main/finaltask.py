@@ -44,6 +44,7 @@ def ending(user):
 
 
 def perusasionpahesoneLottery(user):
+    user.taskFinalUserSayNo += 1
     termios.tcflush(sys.stdin, termios.TCIFLUSH)
     time.sleep(2)
 
@@ -144,7 +145,7 @@ def enterLottery(user):
                 time.sleep(2)
                 print("And write 'Furhat - " + user.id + "' as message")
                 time.sleep(2)
-                print("If you turn the paper behind Furhat you can also scan to swish!")
+                print("If you turn the paper behind your computer and you scan to swish!")
                 time.sleep(2)
                 ending(user)
                 answered = True
@@ -183,6 +184,11 @@ def finaltask_func(user):
             s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
             if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
                 enterLottery(user)
+            elif "why" in s and "not" in s:
+                enterLottery(user)
+            elif "why" in s:
+                time.sleep(2)
+                perusasionpahesoneLottery(user)
             else:
                 time.sleep(2)
                 print("Really?")

@@ -55,6 +55,7 @@ def trytasktwo(user):
 
 
 def perusasionpahesonetasktwo(user):
+    user.taskTwoUserSayNo += 1
     time.sleep(1)
     print("Come on, it is going to be fun, it is not that embarrassing, I am here to keep you company")
     time.sleep(2)
@@ -97,10 +98,17 @@ def tasktwo_func(user):
         i, o, e = select.select([sys.stdin], [], [], 30)
         if i:
             s = sys.stdin.readline().strip().lower().replace('!', '').split(" ")
-            if "yes" in s or "okay" in s or "sure" in s or "yes" in s or "fine" in s or "okey" in s:
-                trytasktwo(user)
-            else:
+            if "no" in s or ("not" in s and "why" not in s) or "nono" in s or "noo" in s:
                 perusasionpahesonetasktwo(user)
+            elif "why" in s and "not" in s:
+                trytasktwo(user)
+            elif "why" in s:
+                time.sleep(2)
+                print("Because it would make me happy!")
+                time.sleep(2)
+                print("So do you want to bark as a dog? *")
+            else:
+                trytasktwo(user)
             answered = True
         else:
             user.taskTwoUserNoResponse += 1

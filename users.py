@@ -35,15 +35,19 @@ class User:
 
         # taskone
         self.taskOneUserNoResponse = 0
+        self.taskOneUserSayNo = 0 # inte i databasen
 
         # tasktwo
         self.taskTwoUserNoResponse = 0
+        self.taskTwoUserSayNo = 0 # inte i databasen
 
         # taskthree
         self.taskThreeUserNoResponse = 0
+        self.taskThreeUserSayNo = 0 # inte i databasen
 
         # taskfinal
         self.taskFinalUserNoResponse = 0
+        self.taskFinalUserSayNo = 0
 
         # total
         self.userNoResponse = self.askNameUserNoResponse + \

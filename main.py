@@ -26,7 +26,7 @@ finaltask.finaltask_func(userOne)
 sqliteConnection = sqlite3.connect('chatbot.db')
 cursor = sqliteConnection.cursor()
 # Larger example
-rows = [(userOne.id, userOne.age, userOne.name, userOne.tickets, userOne.didBarking, userOne.ranAroundTable, userOne.didTrex, userOne.moneySpent, userOne.askNameUserNoResponse, userOne.askNameChatbotNotUnderstood, userOne.askAgeUserNoResponse, userOne.askAgeChatbotNotUnderstood, userOne.askAgeUserNotReady, userOne.explanationUserNoResponse, userOne.explanationUserNotUnderstood, userOne.taskOneUserNoResponse, userOne.taskTwoUserNoResponse, userOne.taskThreeUserNoResponse, userOne.taskFinalUserNoResponse, userOne.userNoResponse)]
-cursor.executemany('INSERT INTO Users VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', rows)
+rows = [(userOne.id, userOne.age, userOne.name, userOne.tickets, userOne.didBarking, userOne.ranAroundTable, userOne.didTrex, userOne.moneySpent, userOne.askNameUserNoResponse, userOne.askNameChatbotNotUnderstood, userOne.askAgeUserNoResponse, userOne.askAgeChatbotNotUnderstood, userOne.askAgeUserNotReady, userOne.explanationUserNoResponse, userOne.explanationUserNotUnderstood, userOne.taskOneUserNoResponse, userOne.taskOneUserSayNo, userOne.taskTwoUserNoResponse, userOne.taskTwoUserSayNo, userOne.taskThreeUserNoResponse, userOne.taskThreeUserSayNo, userOne.taskFinalUserNoResponse, userOne.taskFinalUserSayNo, userOne.userNoResponse)]
+cursor.executemany('INSERT INTO Users VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', rows)
 sqliteConnection.commit()
 sqliteConnection.close()
